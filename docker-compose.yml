@@ -25,25 +25,25 @@ services:
             - python3
             - -u
             - motor_apt_server.py
-    motors_server_zaber:
-        image: motor_control:latest
-        container_name: motors_server_zaber
-        ports:
-            - "54000:54000"
-            - "54001:54001"
-        volumes:
-            - ./config:/app/config/
-            - ./logs:/app/logs/
-            - ./src:/app/
-        privileged: true
-        tty: true
-        stdin_open: true
-        devices:
-            - '/dev:/dev'
-            - '/dev/bus:/dev/bus'
-        working_dir: '/app'
-        restart: always
-        entrypoint:
-            - python3
-            - -u
-            - motor_zaber_server.py
+#        motors_server_zaber:
+#        image: motor_control:latest
+#        container_name: motors_server_zaber
+#        ports:
+#            - "54000:54000"
+#            - "54001:54001"
+#        volumes:
+#            - ./config:/app/config/
+#            - ./logs:/app/logs/
+#            - ./src:/app/
+#        privileged: true
+#        tty: true
+#        stdin_open: true
+#        devices:
+#            - '/dev:/dev'
+#            - '/dev/bus:/dev/bus'
+#        working_dir: '/app'
+#        restart: always
+#        entrypoint:
+#            - python3
+#            - -u
+#            - motor_zaber_server.py

@@ -3,7 +3,7 @@ import os
 import yaml
 from serial.tools import list_ports
 from zmqhelper import ZMQServiceBase, Client
-from motors import RotationController, LinearController, LCController
+from motors import RotationController, RotationControllerELL, LinearController, LCController
 from datetime import datetime
 
 
@@ -68,6 +68,8 @@ class MotorAPTZMQService(ZMQServiceBase):
                 t = m.get('type','').lower()
                 if t == 'rotational':
                     self._motor.append(RotationController(m))
+                elif t == 'rotationalell':
+                    self._motor.append(RotationControllerELL(m))
                 elif t == 'linear':
                     self._motor.append(LinearController(m))
                 elif t == 'lccontroller':
@@ -121,8 +123,8 @@ class MotorAPTZMQService(ZMQServiceBase):
                     self.logger.debug(f"Get absolute position command: {idx} -> {resp}")
                 elif cmd == 'home':
                     idx  = int(parts[1])
-                    self._motor[idx].mHome()
-                    resp = "Homed motor"
+                    error = self._motor[idx].mHome()
+                    resp = 'Homed Motor' if error == 'Success' else error
                     self.logger.debug(f"Home command: {idx}")
                 else: # done
                     idx  = int(parts[1])

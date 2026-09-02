@@ -1,0 +1,24 @@
+config_setup:
+  description: Controller for the Zaber mirror motors at the Alice station.
+  req_port: 54000
+  http_port: 54001
+  loki_host: lcocalhost
+  loki_port: 3100
+  service_name: apt_motor_server_alice
+  redis_host: lcocalhost
+  redis_port: 6379
+  register_redis: false
+  version: 1.0.0
+motors:
+  - port: 0
+    channels:
+        - 1
+        - 2
+        - 3
+        - 4
+    channelName:
+        - HPath_1x
+        - HPath_1y
+        - HPath_2x
+        - HPath_2y
+    type: zaber

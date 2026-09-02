@@ -1,0 +1,51 @@
+config_setup:
+  description: Controller for the Thorlabs APT motors.
+  req_port: 55000
+  http_port: 55001
+  loki_host: localhost
+  loki_port: 3100
+  service_name: apt_motor_server_alice
+  redis_host: localhost
+  redis_port: 6379
+  register_redis: false
+  version: 1.0.0
+motors:
+  - acc:    1
+    maxVel: 1
+    minVel: 1
+    name:   TestELL16
+    serial: 11600002
+    zero:   0
+    type:   rotationalELL
+  
+#  - acc:    30
+#    maxVel: 25
+#    minVel: 20
+#    name:   alice_HWP_2
+#    serial: 83842656
+#    zero:   23.9820
+#    type:   rotational
+#
+#  - acc:    25
+#    maxVel: 25
+#    minVel:  5
+#    name:   alice_QWP_2
+#    serial: 83845982
+#    zero:   111.9915
+#    type:   rotational
+#
+#  - acc:    25
+#    maxVel: 25
+#    minVel:  5
+#    name:   alice_HWP_1
+#    serial: 83854955
+#    zero:   16.7845
+#    type:   rotational
+#
+#  - acc:    25
+#    maxVel: 25
+#    minVel:  5
+#    name:   alice_QWP_1
+#    serial: 83854958
+#    zero:   87.1925
+#    type:   rotational
